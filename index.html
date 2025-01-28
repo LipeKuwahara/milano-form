@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de Armário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9f7e9;
+            border: 1px solid #d4eed8;
+            border-radius: 4px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Requisição de Armário</h2>
+        <form id="formArmario">
+            <label for="altura">Altura (mm):</label>
+            <input type="number" id="altura" required>
+
+            <label for="largura">Largura (mm):</label>
+            <input type="number" id="largura" required>
+
+            <label for="profundidade">Profundidade (mm):</label>
+            <input type="number" id="profundidade" required>
+
+            <label for="alturaBase">Altura da Base (mm):</label>
+            <input type="number" id="alturaBase" required>
+
+            <button type="button" onclick="calcular()">Calcular</button>
+        </form>
+
+        <div id="resultado" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function calcular() {
+            // Obtendo os valores dos campos
+            const altura = parseFloat(document.getElementById('altura').value);
+            const largura = parseFloat(document.getElementById('largura').value);
+            const profundidade = parseFloat(document.getElementById('profundidade').value);
+            const alturaBase = parseFloat(document.getElementById('alturaBase').value);
+
+            // Validando os valores
+            if (isNaN(altura) || isNaN(largura) || isNaN(profundidade) || isNaN(alturaBase)) {
+                alert("Por favor, insira valores válidos.");
+                return;
+            }
+
+            // Calculando as medidas dos componentes
+            const lateralEsquerda = `${profundidade} x ${altura}`;
+            const lateralDireita = `${profundidade} x ${altura}`;
+            const baseTopo = `${largura} x ${profundidade}`;
+            const fundo = `${largura} x ${altura}`;
+            const prateleira = `${largura} x ${profundidade}`;
+
+            // Exibindo os componentes
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+        <strong>Componentes do Armário:</strong><br>
+        - Lateral Esquerda Milano: ${lateralEsquerda} mm<br>
+        - Lateral Direita Milano: ${lateralDireita} mm<br>
+        - Base e Topo MDF: ${baseTopo} mm<br>
+        - Fundo Milano: ${fundo} mm<br>
+        - Prateleira Milano: ${prateleira} mm
+      `;
+            resultadoDiv.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
