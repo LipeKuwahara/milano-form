@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    background-color: #cecece;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e9f7e9;
+    border: 1px solid #d4eed8;
+    border-radius: 4px;
+    color: #333;
+}
+
+/* Ajuste do layout dos campos lado a lado */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-row label {
+    flex: 1;
+    text-align: left;
+}
+
+.form-row input,
+.form-row select {
+    flex: 1;
+}
+
+.form-row input[type="number"],
+.form-row select {
+    width: auto;
+    /* Para controlar o tamanho dos inputs ao lado */
+}
+
+/* Para os 3 campos lado a lado (Tipo Fundo, Tipo Base e Quantidade de Portas) */
+.form-row-triple {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
