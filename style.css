@@ -5,8 +5,17 @@ body {
     background-color: #f9f9f9;
 }
 
+.icon {
+    width: 130px;
+    /* Ajuste conforme necessário */
+    height: auto;
+    align: right;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 .container {
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     background: #fff;
     border-radius: 8px;
@@ -21,7 +30,7 @@ label {
 }
 
 input {
-    width: 100%;
+    width: 50%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
