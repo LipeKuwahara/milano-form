@@ -11,12 +11,12 @@ body {
     height: auto;
     vertical-align: middle;
     margin-right: 10px;
-
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 500px;
+    /* Aumentei a largura para melhor acomodação */
+    margin: 20px auto;
     background: #fff;
     border-radius: 8px;
     padding: 20px;
@@ -29,8 +29,9 @@ label {
     font-weight: bold;
 }
 
-input {
-    width: 50%;
+input,
+select {
+    width: 100%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -39,30 +40,28 @@ input {
 }
 
 select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
     background-color: #cecece;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #007bff;
     color: #fff;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     margin-top: 20px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Resultado do cálculo */
 .result {
     margin-top: 20px;
     padding: 10px;
@@ -73,31 +72,33 @@ button:hover {
 }
 
 /* Ajuste do layout dos campos lado a lado */
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.form-row label {
-    flex: 1;
-    text-align: left;
-}
-
-.form-row input,
-.form-row select {
-    flex: 1;
-}
-
-.form-row input[type="number"],
-.form-row select {
-    width: auto;
-    /* Para controlar o tamanho dos inputs ao lado */
-}
-
-/* Para os 3 campos lado a lado (Tipo Fundo, Tipo Base e Quantidade de Portas) */
+.form-row,
 .form-row-triple {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+}
+
+.form-row div,
+.form-row-triple div {
+    flex: 1;
+}
+
+.form-row input,
+.form-row select,
+.form-row-triple input,
+.form-row-triple select {
+    width: 100%;
+}
+
+/* Estilização da Visualização 3D */
+#visualizacao3D {
+    width: 100%;
+    height: 400px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

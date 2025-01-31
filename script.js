@@ -28,8 +28,8 @@ function calcular() {
     // Ajuste da largura da Base e Topo conforme a necessidade de divisória
     if (largura > 1430) {
         divisoria = `${profundidade} x ${altura}`;
-        baseTopo = `${largura - (largura / 2) - 25 - 12.5} x ${profundidade} x ${baseEspessura}`;
-        prateleira = `${largura - (largura / 2) - 25 - 12.5 - 2} x ${profundidade - 42}`;
+        baseTopo = `${(largura / 2) - 25 - 12.5} x ${profundidade} x ${baseEspessura}`;
+        prateleira = `${(largura / 2) - 25 - 12.5 - 2} x ${profundidade - 42}`;
     } else {
         baseTopo = `${largura - 50} x ${profundidade} x ${baseEspessura}`;
     }
@@ -38,15 +38,12 @@ function calcular() {
     let larguraPorta = qtdPortas === "1porta" ? largura - 27 : (largura - 29) / 2;
 
     // Verificação da restrição de largura das portas
-    if (larguraPorta > 750 || larguraPorta < 200) {
-        alert("Erro: A largura de uma das portas ultrapassa o limite. Conforme catálogo");
+    if (larguraPorta > 750) {
+        alert("Erro: A largura de uma das portas ultrapassa 750mm. Ajuste as dimensões.");
         return; // Impede a execução do restante do código
-    }
-
-    //Restrição para profundidade
-    if (profundidade > 670) {
-        alert("A profundidade máxima permitida é de 670mm");
-        return;
+    } else if (larguraPorta < 200) {
+        alert("Erro: A largura de uma das portas é inferior a 200mm. Ajuste as dimensões.");
+        return; // Impede a execução do restante do código
     }
 
     // Exibindo os resultados
@@ -62,4 +59,44 @@ function calcular() {
       - ${qtdPortas === "1porta" ? "Porta" : "Portas"}: ${larguraPorta.toFixed(1)} mm x ${(altura - 36).toFixed(1)} mm<br>
     `;
     resultadoDiv.style.display = 'block';
+
+    // Renderizar visualização 3D
+    //renderizarArmario3D(largura, altura, profundidade, divisoria !== "Nenhuma");
 }
+
+/*function renderizarArmario3D(largura, altura, profundidade, temDivisoria) {
+    // Limpa a visualização anterior
+    document.getElementById('visualizacao3D').innerHTML = "";
+
+    // Configuração do Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer(); THREE.
+        renderer.setSize(400, 400);
+    document.getElementById('visualizacao3D').appendChild(renderer.domElement);
+
+    // Criando material e armário
+    const material = new THREE.MeshBasicMaterial({ color: 0x8B4513, wireframe: true });
+    const armarioGeo = new THREE.BoxGeometry(largura / 100, altura / 100, profundidade / 100);
+    const armarioMesh = new THREE.Mesh(armarioGeo, material);
+    scene.add(armarioMesh);
+
+    // Adicionando divisória se necessário
+    if (temDivisoria) {
+        const divisoriaGeo = new THREE.BoxGeometry(2 / 100, altura / 100, profundidade / 100);
+        const divisoriaMesh = new THREE.Mesh(divisoriaGeo, material);
+        divisoriaMesh.position.x = 0;
+        scene.add(divisoriaMesh);
+    }
+
+    // Posicionando a câmera corretamente
+    camera.position.set(0, 0, 5);
+
+    // Renderizando a cena
+    function animate() {
+        requestAnimationFrame(animate);
+        armarioMesh.rotation.y += 0.01; // Rotação leve para melhor visualização
+        renderer.render(scene, camera);
+    }
+    animate();
+}*/
