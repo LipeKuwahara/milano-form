@@ -53,6 +53,47 @@ function calcular() {
         tipoPorta = "Slow Grandes Vãos";
     }
 
+    // Usinagens indicadas para MDF
+    let usinagem = "";
+
+    if (tipoBase === "base25") {
+        if (larguraPorta <= 600 || alturaPorta <= 2300) {
+            if (tipoFundo === "fundovidro") {
+                usinagem = "USIMIL006-B";
+            } else if (tipoFundo === "fundomdf6") {
+                usinagem = "USIMIL011-B";
+            } else if (tipoFundo === "fundomdfx") {
+                usinagem = "USIMIL009-B";
+            }
+        } else {
+            if (tipoFundo === "fundovidro") {
+                usinagem = "USIMIL014-B";
+            } else if (tipoFundo === "fundomdf6") {
+                usinagem = "USIMIL016-B";
+            } else if (tipoFundo === "fundomdfx") {
+                usinagem = "USIMIL015-B";
+            }
+        }
+    } else if (tipoBase === "base30") {
+        if (larguraPorta < 600 || alturaPorta < 2300) {
+            if (tipoFundo === "fundovidro") {
+                usinagem = "USIMIL017-B";
+            } else if (tipoFundo === "fundomdf6") {
+                usinagem = "USIMIL018-B";
+            } else if (tipoFundo === "fundomdfx") {
+                usinagem = "USIMIL019-B";
+            }
+        } else {
+            if (tipoFundo === "fundovidro") {
+                usinagem = "USIMIL020-B";
+            } else if (tipoFundo === "fundomdf6") {
+                usinagem = "USIMIL021-B";
+            } else if (tipoFundo === "fundomdfx") {
+                usinagem = "USIMIL022-B";
+            }
+        }
+    }
+
     // Exibindo os resultados
     const resultadoDiv = document.getElementById('resultado');
     resultadoDiv.innerHTML = `
@@ -64,6 +105,7 @@ function calcular() {
       - Prateleira Milano: ${prateleira} mm<br>
       - Divisória: ${divisoria}<br>
       - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} mm x ${alturaPorta} mm<br>
+      - Usinagem da Base: ${usinagem}<br>
     `;
     resultadoDiv.style.display = 'block';
 
