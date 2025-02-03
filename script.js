@@ -67,43 +67,4 @@ function calcular() {
     `;
     resultadoDiv.style.display = 'block';
 
-    // Renderizar visualização 3D
-    //renderizarArmario3D(largura, altura, profundidade, divisoria !== "Nenhuma");
 }
-
-/*function renderizarArmario3D(largura, altura, profundidade, temDivisoria) {
-    // Limpa a visualização anterior
-    document.getElementById('visualizacao3D').innerHTML = "";
-
-    // Configuração do Three.js
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer(); THREE.
-        renderer.setSize(400, 400);
-    document.getElementById('visualizacao3D').appendChild(renderer.domElement);
-
-    // Criando material e armário
-    const material = new THREE.MeshBasicMaterial({ color: 0x8B4513, wireframe: true });
-    const armarioGeo = new THREE.BoxGeometry(largura / 100, altura / 100, profundidade / 100);
-    const armarioMesh = new THREE.Mesh(armarioGeo, material);
-    scene.add(armarioMesh);
-
-    // Adicionando divisória se necessário
-    if (temDivisoria) {
-        const divisoriaGeo = new THREE.BoxGeometry(2 / 100, altura / 100, profundidade / 100);
-        const divisoriaMesh = new THREE.Mesh(divisoriaGeo, material);
-        divisoriaMesh.position.x = 0;
-        scene.add(divisoriaMesh);
-    }
-
-    // Posicionando a câmera corretamente
-    camera.position.set(0, 0, 5);
-
-    // Renderizando a cena
-    function animate() {
-        requestAnimationFrame(animate);
-        armarioMesh.rotation.y += 0.01; // Rotação leve para melhor visualização
-        renderer.render(scene, camera);
-    }
-    animate();
-}*/
