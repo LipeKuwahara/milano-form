@@ -19,6 +19,8 @@ function calcular() {
     let fundo = `${largura - 36} x ${altura - 68.6}`;
     let prateleira = `${largura - 52} x ${profundidade - 42}`;
     let divisoria = "Nenhuma";
+    let tipoPorta = "Slow";
+    let alturaPorta = `${altura - 36}`;
 
     // Ajuste do Fundo para MDF 6mm
     if (tipoFundo === "fundomdf6") {
@@ -46,6 +48,11 @@ function calcular() {
         return; // Impede a execução do restante do código
     }
 
+    // Tipologia de portas
+    if (larguraPorta > 600 || alturaPorta > 2300) {
+        tipoPorta = "Slow Grandes Vãos";
+    }
+
     // Exibindo os resultados
     const resultadoDiv = document.getElementById('resultado');
     resultadoDiv.innerHTML = `
@@ -56,7 +63,7 @@ function calcular() {
       - Fundo Milano: ${fundo} mm<br>
       - Prateleira Milano: ${prateleira} mm<br>
       - Divisória: ${divisoria}<br>
-      - ${qtdPortas === "1porta" ? "Porta" : "Portas"}: ${larguraPorta.toFixed(1)} mm x ${(altura - 36).toFixed(1)} mm<br>
+      - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} mm x ${alturaPorta} mm<br>
     `;
     resultadoDiv.style.display = 'block';
 
