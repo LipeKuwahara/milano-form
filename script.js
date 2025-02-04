@@ -77,6 +77,12 @@ function calcular() {
         usinagem = usinagensBase30[tipoFundo][tipoUsinagem];
     }
 
+    // Restição Altura Armário
+    if (altura >= 3000) {
+        alert("A altura do armário ultrapassa 3000mm.");
+        return; // Impede a execução do restante do código
+    }
+
     // Exibindo os resultados
     const resultadoDiv = document.getElementById('resultado');
     resultadoDiv.innerHTML = `
@@ -87,7 +93,7 @@ function calcular() {
       - Fundo Milano: ${fundo} mm<br>
       - Prateleira Milano: ${prateleira} mm<br>
       - Divisória: ${divisoria}<br>
-      - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} mm x ${alturaPorta} mm<br>
+      - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} x ${alturaPorta} mm<br>
       - Usinagem da Base: ${usinagem}<br>
     `;
     resultadoDiv.style.display = 'block';
