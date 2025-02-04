@@ -40,58 +40,41 @@ function calcular() {
     let larguraPorta = qtdPortas === "1porta" ? largura - 27 : (largura - 29) / 2;
 
     // Verificação da restrição de largura das portas
-    if (larguraPorta > 750) {
+    if (larguraPorta >= 750) {
         alert("Erro: A largura de uma das portas ultrapassa 750mm. Ajuste as dimensões.");
         return; // Impede a execução do restante do código
-    } else if (larguraPorta < 200) {
+    } else if (larguraPorta <= 200) {
         alert("Erro: A largura de uma das portas é inferior a 200mm. Ajuste as dimensões.");
         return; // Impede a execução do restante do código
     }
 
     // Tipologia de portas
-    if (larguraPorta > 600 || alturaPorta > 2300) {
+    if (larguraPorta >= 600 || alturaPorta >= 2300) {
         tipoPorta = "Slow Grandes Vãos";
     }
 
     // Usinagens indicadas para MDF
     let usinagem = "";
 
+    const usinagensBase25 = {
+        fundovidro: { normal: "USIMIL006-B", grande: "USIMIL014-B" },
+        fundomdf6: { normal: "USIMIL011-B", grande: "USIMIL016-B" },
+        fundomdfx: { normal: "USIMIL009-B", grande: "USIMIL015-B" }
+    };
+
+    const usinagensBase30 = {
+        fundovidro: { normal: "USIMIL017-B", grande: "USIMIL020-B" },
+        fundomdf6: { normal: "USIMIL018-B", grande: "USIMIL021-B" },
+        fundomdfx: { normal: "USIMIL019-B", grande: "USIMIL022-B" }
+    };
+
+    // Determinação da usinagem correta
+    const tipoUsinagem = (larguraPorta >= 600 || alturaPorta >= 2300) ? "grande" : "normal";
+
     if (tipoBase === "base25") {
-        if (larguraPorta <= 600 || alturaPorta <= 2300) {
-            if (tipoFundo === "fundovidro") {
-                usinagem = "USIMIL006-B";
-            } else if (tipoFundo === "fundomdf6") {
-                usinagem = "USIMIL011-B";
-            } else if (tipoFundo === "fundomdfx") {
-                usinagem = "USIMIL009-B";
-            }
-        } else {
-            if (tipoFundo === "fundovidro") {
-                usinagem = "USIMIL014-B";
-            } else if (tipoFundo === "fundomdf6") {
-                usinagem = "USIMIL016-B";
-            } else if (tipoFundo === "fundomdfx") {
-                usinagem = "USIMIL015-B";
-            }
-        }
+        usinagem = usinagensBase25[tipoFundo][tipoUsinagem];
     } else if (tipoBase === "base30") {
-        if (larguraPorta < 600 || alturaPorta < 2300) {
-            if (tipoFundo === "fundovidro") {
-                usinagem = "USIMIL017-B";
-            } else if (tipoFundo === "fundomdf6") {
-                usinagem = "USIMIL018-B";
-            } else if (tipoFundo === "fundomdfx") {
-                usinagem = "USIMIL019-B";
-            }
-        } else {
-            if (tipoFundo === "fundovidro") {
-                usinagem = "USIMIL020-B";
-            } else if (tipoFundo === "fundomdf6") {
-                usinagem = "USIMIL021-B";
-            } else if (tipoFundo === "fundomdfx") {
-                usinagem = "USIMIL022-B";
-            }
-        }
+        usinagem = usinagensBase30[tipoFundo][tipoUsinagem];
     }
 
     // Exibindo os resultados
