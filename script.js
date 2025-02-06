@@ -40,8 +40,8 @@ function calcular() {
     let larguraPorta = qtdPortas === "1porta" ? largura - 27 : (largura - 29) / 2;
 
     // Verificação da restrição de largura das portas
-    if (larguraPorta >= 750) {
-        alert("Erro: A largura de uma das portas ultrapassa 750mm. Ajuste as dimensões.");
+    if (larguraPorta >= 700) {
+        alert("Erro: A largura de uma das portas ultrapassa 700mm. Ajuste as dimensões.");
         return; // Impede a execução do restante do código
     } else if (larguraPorta <= 200) {
         alert("Erro: A largura de uma das portas é inferior a 200mm. Ajuste as dimensões.");
