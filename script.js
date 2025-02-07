@@ -3,6 +3,7 @@ function calcular() {
     const altura = parseFloat(document.getElementById('altura').value);
     const largura = parseFloat(document.getElementById('largura').value);
     const profundidade = parseFloat(document.getElementById('profundidade').value);
+    const alturaBase = parseFloat(document.getElementById('alturaBase').value);
 
     // Obtendo os valores das seleções
     const tipoFundo = document.getElementById('tipofundo').value;
@@ -20,7 +21,7 @@ function calcular() {
     let prateleira = `${largura - 52} x ${profundidade - 42}`;
     let divisoria = "Nenhuma";
     let tipoPorta = "Slow";
-    let alturaPorta = `${altura - 36}`;
+    let alturaPorta = `${altura - 6}`;
 
     // Ajuste do Fundo para MDF 6mm
     if (tipoFundo === "fundomdf6") {
@@ -93,7 +94,7 @@ function calcular() {
       - Fundo Milano: ${fundo} mm<br>
       - Prateleira Milano: ${prateleira} mm<br>
       - Divisória: ${divisoria}<br>
-      - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} x ${alturaPorta} mm<br>
+      - ${qtdPortas === "1porta" ? "Porta " : "Portas "} ${tipoPorta}: ${larguraPorta} x ${alturaPorta - alturaBase} mm<br>
       - Usinagem da Base: ${usinagem}<br>
     `;
     resultadoDiv.style.display = 'block';
