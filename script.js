@@ -24,7 +24,7 @@ function calcular() {
     let alturaPorta = `${altura - 6}`;
 
     // Ajuste do Fundo para MDF 6mm
-    if (tipoFundo === "fundomdf6") {
+    if (tipoFundo === "fundomdfx") {
         fundo = `${largura - 31.5} x ${altura - 68.6}`;
     }
 
