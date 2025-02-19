@@ -17,7 +17,7 @@ function calcular() {
     const lateralEsquerda = `${profundidade} x ${altura}`;
     const lateralDireita = `${profundidade} x ${altura}`;
     let baseTopo;
-    let fundo = `${largura - 36} x ${altura - 68.6}`;
+    let fundo = `${largura - 36} x ${altura - 38.6 - alturaBase}`;
     let prateleira = `${largura - 52} x ${profundidade - 42}`;
     let divisoria = "Nenhuma";
     let tipoPorta = "Slow";
@@ -25,7 +25,7 @@ function calcular() {
 
     // Ajuste do Fundo para MDF 6mm
     if (tipoFundo === "fundomdfx") {
-        fundo = `${largura - 31.5} x ${altura - 68.6}`;
+        fundo = `${largura - 31.5} x ${altura - 38.6 - alturaBase}`;
     }
 
     // Ajuste da largura da Base e Topo conforme a necessidade de divisória
